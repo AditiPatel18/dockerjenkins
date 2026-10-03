@@ -2,21 +2,15 @@ pipeline {
     agent any
 
     stages {
-        stage('Build') {
+        stage('Build Docker Image') {
             steps {
-                echo 'Building Docker image...'
+                sh 'docker build -t aditipatel18/my-first-app:jenkins .'
             }
         }
 
-        stage('Test') {
+        stage('Test Docker Image') {
             steps {
-                echo 'Testing...'
-            }
-        }
-
-        stage('Deploy') {
-            steps {
-                echo 'Deploying...'
+                sh 'docker images aditipatel18/my-first-app'
             }
         }
     }
